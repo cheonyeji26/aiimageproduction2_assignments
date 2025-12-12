@@ -18,32 +18,53 @@
 
     <main class="gallery-container">
         
-        <section class="artwork-item fade-in-section" data-delay="0.1">
-            <div class="prompt-card" data-target="art-01">
-                <h2>Prompt 01: The Glitch Muse</h2>
-                <p class="prompt-text">"A highly detailed portrait of a futuristic deity made of fragmented code, rendered in deep neon pink and cyan, heavy chromatic aberration, cinematic lighting."</p>
-                <span class="reveal-indicator">클릭하여 이미지 해금 &raquo;</span>
-            </div>
-            <div class="artwork-frame" id="art-01">
-                <img src="./assets/art_01.jpg" alt="AI Artwork 01" class="artwork-image">
-            </div>
-        </section>
-
-        <section class="artwork-item fade-in-section" data-delay="0.3">
-            <div class="artwork-frame" id="art-02">
-                <img src="./assets/art_02.jpg" alt="AI Artwork 02" class="artwork-image">
-            </div>
-            <div class="prompt-card" data-target="art-02">
-                <h2>Prompt 02: Bio-Mechanical Landscape</h2>
-                <p class="prompt-text">"A vast, overgrown jungle landscape where plants are made of rusted metal and glowing circuitry. volumetric fog, 8k render, digital painting."</p>
-                <span class="reveal-indicator">클릭하여 이미지 해금 &raquo;</span>
+        <section id="about" class="intro-section fade-in-section" data-delay="0">
+            <h2 class="section-title">01_PROFILE_HACK</h2>
+            <div class="intro-content">
+                <div class="profile-text">
+                    <p>안녕하세요. 저는 [본인 이름]입니다. AI 이미지 생성 수업을 통해 언어와 시각 예술의 경계를 탐험하고 있습니다. 저의 작업은 주로 미래 기술, 고전 신화, 그리고 디지털 오류(Glitch)를 융합하는 것에 초점을 맞춥니다. 모든 이미지는 [사용 AI 모델: Midjourney, Stable Diffusion 등]을 기반으로 생성되었습니다.</p>
+                    <p class="signature">-- [본인 서명 또는 연락처]</p>
+                </div>
+                <div class="profile-image-wrapper">
+                    <img src="./assets/profile.jpg" alt="프로필 이미지" class="profile-image">
+                </div>
             </div>
         </section>
 
+        <section id="video-showcase" class="video-section fade-in-section" data-delay="0.2">
+            <h2 class="section-title">02_MOTION_MANIFESTO</h2>
+            <p>AI 이미지를 활용한 짧은 실험 영상 또는 타임랩스입니다.</p>
+            <div class="video-wrapper">
+                <iframe 
+                    width="100%" 
+                    height="500" 
+                    src="https://www.youtube.com/embed/[유튜브 비디오 ID]" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </section>
+        
+        <section id="grid-gallery" class="grid-gallery-section fade-in-section" data-delay="0.4">
+            <h2 class="section-title">03_CONCEPT_SKETCHES</h2>
+            <p>특정 컨셉을 탐험하며 생성한 다양한 바리에이션 또는 아이디어 스케치들입니다.</p>
+            <div class="image-grid">
+                <img src="./assets/grid_01.jpg" alt="그리드 이미지 1" class="grid-image">
+                <img src="./assets/grid_02.jpg" alt="그리드 이미지 2" class="grid-image">
+                <img src="./assets/grid_03.jpg" alt="그리드 이미지 3" class="grid-image">
+                <img src="./assets/grid_04.jpg" alt="그리드 이미지 4" class="grid-image">
+                </div>
+        </section>
+
+        <section class="artwork-item fade-in-section" data-delay="0.6">
+            </section>
+        
         </main>
 
     <footer class="site-footer">
-        <p>&copy; 2024 AI Portfolio. All Rights Reserved.</p>
+        <p>&copy; 2024 AI Portfolio. Digital Creation by [본인 이름].</p>
     </footer>
 
     <script src="script.js"></script>

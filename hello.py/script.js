@@ -1,3 +1,4 @@
+// 기존 script.js 코드 그대로 사용
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. 프롬프트 클릭 시 이미지 공개 (Reveal)
