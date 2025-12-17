@@ -3,6 +3,7 @@ const world = document.getElementById('world');
 const portals = document.querySelectorAll('.portal');
 const overlay = document.getElementById('overlay');
 const closeBtn = document.getElementById('close-btn');
+const playerLight = document.getElementById('player-light');
 
 // Game State
 let gameState = {
@@ -22,12 +23,18 @@ let gameState = {
 // Input Listeners
 window.addEventListener('keydown', (e) => {
     gameState.keys[e.code] = true;
-    console.log("Key Pressed:", e.code); // 키가 먹는지 콘솔에서 확인용
 });
 
 window.addEventListener('keyup', (e) => {
     gameState.keys[e.code] = false;
 });
+
+// Close Overlay
+closeBtn.addEventListener('click', () => {
+    overlay.classList.add('hidden');
+    gameState.isOverlayOpen = false;
+    // 오버레이 닫은 후 게임 루프 재개
+    requestAnimationFrame(update);
 });
 
 function update() {
@@ -59,9 +66,14 @@ function update() {
     // Level Bounds
     if (gameState.posX < 0) gameState.posX = 0;
 
-    // Apply Styles
+    // Apply Styles (Player & Light)
     player.style.left = gameState.posX + 'px';
-    player.style.bottom = (100 - gameState.posY) + 'px'; // 100 is ground height
+    player.style.bottom = (100 - gameState.posY) + 'px';
+    
+    if (playerLight) {
+        playerLight.style.left = gameState.posX + 'px';
+        playerLight.style.bottom = '100px'; 
+    }
 
     // Camera Follow (Scroll World)
     const viewportWidth = window.innerWidth;
@@ -80,7 +92,6 @@ function checkCollisions() {
     portals.forEach(portal => {
         const portalRect = portal.getBoundingClientRect();
 
-        // Standard AABB Collision detection
         if (
             playerRect.left < portalRect.right &&
             playerRect.right > portalRect.left &&
@@ -92,62 +103,48 @@ function checkCollisions() {
     });
 }
 
-// game.js의 openProject 함수를 아래 내용으로 교체하세요
 function openProject(portal) {
+    if (gameState.isOverlayOpen) return;
+    
     gameState.isOverlayOpen = true;
     gameState.velX = 0;
+    gameState.keys = {}; // 키 입력 초기화
 
     const title = portal.getAttribute('data-title');
     const desc = portal.getAttribute('data-desc');
-    const imgPath = portal.getAttribute('data-img'); // 이미지 경로 가져오기
+    const imgPath = portal.getAttribute('data-img');
 
     document.getElementById('project-title').innerText = title;
     document.getElementById('project-desc').innerText = desc;
     
-    // 미디어 플레이스홀더 자리에 이미지 넣기
     const mediaBox = document.querySelector('.media-placeholder');
-    mediaBox.innerHTML = `<img src="${imgPath}" style="max-width:100%; max-height:100%; border-radius:8px;">`;
+    mediaBox.innerHTML = `<img src="${imgPath}" style="max-width:100%; max-height:100%; border-radius:8px;" onerror="this.alt='이미지를 찾을 수 없습니다'">`;
 
     overlay.classList.remove('hidden');
 }
 
-// 별 생성 함수 (game.js 맨 아래 추가)
 function createStars() {
     const starsContainer = document.getElementById('stars');
-    const starCount = 150; // 별의 개수
-
+    if (!starsContainer) return;
+    
+    const starCount = 150;
     for (let i = 0; i < starCount; i++) {
         const star = document.createElement('div');
         star.className = 'star';
-        
-        // 랜덤 위치 및 크기
-        const x = Math.random() * 5000; // 월드 전체 길이
+        const x = Math.random() * 5000;
         const y = Math.random() * (window.innerHeight - 100);
         const size = Math.random() * 3;
-        const duration = 1 + Math.random() * 3; // 반짝이는 속도 랜덤
+        const duration = 1 + Math.random() * 3;
 
         star.style.left = `${x}px`;
         star.style.top = `${y}px`;
         star.style.width = `${size}px`;
         star.style.height = `${size}px`;
         star.style.setProperty('--duration', `${duration}s`);
-        
         starsContainer.appendChild(star);
     }
 }
 
-// update() 함수 안에서 조명 위치 업데이트 추가
-function update() {
-    // ... 기존 물리 코드 ...
-
-    // 조명이 캐릭터를 따라다님
-    const playerLight = document.getElementById('player-light');
-    playerLight.style.left = gameState.posX + 'px';
-    playerLight.style.bottom = '100px'; // 지면에 고정
-
-    // ... 기존 카메라/렌더링 코드 ...
-}
-
-// 게임 시작 시 별 생성 호출
+// 실행
 createStars();
 update();
