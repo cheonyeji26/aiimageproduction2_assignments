@@ -109,3 +109,44 @@ function openProject(portal) {
 
     overlay.classList.remove('hidden');
 }
+
+// 별 생성 함수 (game.js 맨 아래 추가)
+function createStars() {
+    const starsContainer = document.getElementById('stars');
+    const starCount = 150; // 별의 개수
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        // 랜덤 위치 및 크기
+        const x = Math.random() * 5000; // 월드 전체 길이
+        const y = Math.random() * (window.innerHeight - 100);
+        const size = Math.random() * 3;
+        const duration = 1 + Math.random() * 3; // 반짝이는 속도 랜덤
+
+        star.style.left = `${x}px`;
+        star.style.top = `${y}px`;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.setProperty('--duration', `${duration}s`);
+        
+        starsContainer.appendChild(star);
+    }
+}
+
+// update() 함수 안에서 조명 위치 업데이트 추가
+function update() {
+    // ... 기존 물리 코드 ...
+
+    // 조명이 캐릭터를 따라다님
+    const playerLight = document.getElementById('player-light');
+    playerLight.style.left = gameState.posX + 'px';
+    playerLight.style.bottom = '100px'; // 지면에 고정
+
+    // ... 기존 카메라/렌더링 코드 ...
+}
+
+// 게임 시작 시 별 생성 호출
+createStars();
+update();

@@ -8,48 +8,43 @@
 </head>
 <body>
 
-    <div id="game-container">
-        <div id="world">
-            <div id="ground"></div>
-            
-            <div id="player"></div>
+<div id="game-container">
+    <div id="world">
+        <div id="stars"></div> 
 
-            <div class="portal" data-title="Neural Landscapes" data-desc="A series of AI-generated environments exploring dream logic.">
-                <div class="portal-visual"></div>
-                <div class="portal-label">Project 01</div>
-            </div>
+        <div id="ground"></div>
 
-            <div class="portal" style="left: 1200px;" data-title="Digital Flesh" data-desc="Exploring the boundary between organic textures and synthetic generation.">
-                <div class="portal-visual"></div>
-                <div class="portal-label">Project 02</div>
-            </div>
+        <div id="player-light"></div> 
+        
+        <div id="player"></div>
 
-            <div class="portal" style="left: 2000px;" data-title="Temporal Loops" data-desc="An AI video experiment with recursive motion." >
-                <div class="portal-visual"></div>
-                <div class="portal-label">Project 03</div>
-            </div>
-        </div>
         <div class="portal" data-title="Neural Landscapes" data-desc="AI로 생성된 초현실적 풍경입니다." data-img="work1.jpg">
-    <div class="portal-visual"></div>
-    <div class="portal-label">Project 01</div>
-</div>
-
-<div class="portal" style="left: 1200px;" data-title="Digital Flesh" data-desc="유기적 질감 실험." data-img="work2.jpg">
-    <div class="portal-visual"></div>
-    <div class="portal-label">Project 02</div>
-</div>
-
-        <div id="overlay" class="hidden">
-            <div class="overlay-content">
-                <button id="close-btn">Close [X]</button>
-                <h2 id="project-title">Project Name</h2>
-                <p id="project-desc">Description goes here...</p>
-                <div class="media-placeholder">AI Media Loading...</div>
-            </div>
+            <div class="portal-visual"></div>
+            <div class="portal-label">Project 01</div>
         </div>
 
-        <div class="instructions">Use [Arrow Keys] or [WASD] to Move & Jump</div>
+        <div class="portal" style="left: 1200px;" data-title="Digital Flesh" data-desc="유기적 질감 실험." data-img="work2.jpg">
+            <div class="portal-visual"></div>
+            <div class="portal-label">Project 02</div>
+        </div>
+
+        <div class="portal" style="left: 2000px;" data-title="Temporal Loops" data-desc="AI 비디오 실험작입니다." data-img="work1.jpg">
+            <div class="portal-visual"></div>
+            <div class="portal-label">Project 03</div>
+        </div>
     </div>
+
+    <div id="overlay" class="hidden">
+        <div class="overlay-content">
+            <button id="close-btn">Close [X]</button>
+            <h2 id="project-title">Project Name</h2>
+            <p id="project-desc">Description goes here...</p>
+            <div class="media-placeholder">이미지 로딩 중...</div>
+        </div>
+    </div>
+
+    <div class="instructions">Use [Arrow Keys] or [WASD] to Move & Jump</div>
+</div>
 
     <script src="game.js"></script>
 </body>
