@@ -20,13 +20,14 @@ let gameState = {
 };
 
 // Input Listeners
-window.addEventListener('keydown', (e) => gameState.keys[e.code] = true);
-window.addEventListener('keyup', (e) => gameState.keys[e.code] = false);
+window.addEventListener('keydown', (e) => {
+    gameState.keys[e.code] = true;
+    console.log("Key Pressed:", e.code); // 키가 먹는지 콘솔에서 확인용
+});
 
-// Close Overlay
-closeBtn.addEventListener('click', () => {
-    overlay.classList.add('hidden');
-    gameState.isOverlayOpen = false;
+window.addEventListener('keyup', (e) => {
+    gameState.keys[e.code] = false;
+});
 });
 
 function update() {
