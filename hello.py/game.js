@@ -91,18 +91,21 @@ function checkCollisions() {
     });
 }
 
+// game.js의 openProject 함수를 아래 내용으로 교체하세요
 function openProject(portal) {
     gameState.isOverlayOpen = true;
-    
-    // Stop character movement
     gameState.velX = 0;
+
+    const title = portal.getAttribute('data-title');
+    const desc = portal.getAttribute('data-desc');
+    const imgPath = portal.getAttribute('data-img'); // 이미지 경로 가져오기
+
+    document.getElementById('project-title').innerText = title;
+    document.getElementById('project-desc').innerText = desc;
     
-    // Fill overlay data
-    document.getElementById('project-title').innerText = portal.getAttribute('data-title');
-    document.getElementById('project-desc').innerText = portal.getAttribute('data-desc');
-    
+    // 미디어 플레이스홀더 자리에 이미지 넣기
+    const mediaBox = document.querySelector('.media-placeholder');
+    mediaBox.innerHTML = `<img src="${imgPath}" style="max-width:100%; max-height:100%; border-radius:8px;">`;
+
     overlay.classList.remove('hidden');
 }
-
-// Start Game Loop
-update();
