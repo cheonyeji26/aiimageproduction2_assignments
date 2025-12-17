@@ -5,7 +5,6 @@ const overlay = document.getElementById('overlay');
 const closeBtn = document.getElementById('close-btn');
 const playerLight = document.getElementById('player-light');
 
-// Game State
 let gameState = {
     posX: 100,
     posY: 0,
@@ -20,7 +19,7 @@ let gameState = {
     isOverlayOpen: false
 };
 
-// Input Listeners
+// 1. 입력 리스너 (괄호 확인 완료)
 window.addEventListener('keydown', (e) => {
     gameState.keys[e.code] = true;
 });
@@ -29,44 +28,38 @@ window.addEventListener('keyup', (e) => {
     gameState.keys[e.code] = false;
 });
 
-// Close Overlay
+// 2. 오버레이 닫기 버튼
 closeBtn.addEventListener('click', () => {
     overlay.classList.add('hidden');
     gameState.isOverlayOpen = false;
-    // 오버레이 닫은 후 게임 루프 재개
     requestAnimationFrame(update);
 });
 
+// 3. 메인 게임 루프
 function update() {
     if (gameState.isOverlayOpen) return;
 
-    // Horizontal Movement
     if (gameState.keys['ArrowRight'] || gameState.keys['KeyD']) gameState.velX += gameState.speed;
     if (gameState.keys['ArrowLeft'] || gameState.keys['KeyA']) gameState.velX -= gameState.speed;
 
-    // Jump Logic
     if ((gameState.keys['ArrowUp'] || gameState.keys['KeyW'] || gameState.keys['Space']) && !gameState.isJumping) {
         gameState.velY = gameState.jumpStrength;
         gameState.isJumping = true;
     }
 
-    // Apply Physics
     gameState.velX *= gameState.friction;
     gameState.velY += gameState.gravity;
     gameState.posX += gameState.velX;
     gameState.posY += gameState.velY;
 
-    // Ground Collision
     if (gameState.posY > 0) {
         gameState.posY = 0;
         gameState.velY = 0;
         gameState.isJumping = false;
     }
 
-    // Level Bounds
     if (gameState.posX < 0) gameState.posX = 0;
 
-    // Apply Styles (Player & Light)
     player.style.left = gameState.posX + 'px';
     player.style.bottom = (100 - gameState.posY) + 'px';
     
@@ -75,7 +68,6 @@ function update() {
         playerLight.style.bottom = '100px'; 
     }
 
-    // Camera Follow (Scroll World)
     const viewportWidth = window.innerWidth;
     const scrollTrigger = viewportWidth / 2;
     if (gameState.posX > scrollTrigger) {
@@ -86,12 +78,11 @@ function update() {
     requestAnimationFrame(update);
 }
 
+// 4. 충돌 감지
 function checkCollisions() {
     const playerRect = player.getBoundingClientRect();
-
     portals.forEach(portal => {
         const portalRect = portal.getBoundingClientRect();
-
         if (
             playerRect.left < portalRect.right &&
             playerRect.right > portalRect.left &&
@@ -103,48 +94,40 @@ function checkCollisions() {
     });
 }
 
+// 5. 프로젝트 창 열기
 function openProject(portal) {
     if (gameState.isOverlayOpen) return;
-    
     gameState.isOverlayOpen = true;
     gameState.velX = 0;
-    gameState.keys = {}; // 키 입력 초기화
+    gameState.keys = {}; 
 
-    const title = portal.getAttribute('data-title');
-    const desc = portal.getAttribute('data-desc');
-    const imgPath = portal.getAttribute('data-img');
-
-    document.getElementById('project-title').innerText = title;
-    document.getElementById('project-desc').innerText = desc;
+    document.getElementById('project-title').innerText = portal.getAttribute('data-title');
+    document.getElementById('project-desc').innerText = portal.getAttribute('data-desc');
     
+    const imgPath = portal.getAttribute('data-img');
     const mediaBox = document.querySelector('.media-placeholder');
-    mediaBox.innerHTML = `<img src="${imgPath}" style="max-width:100%; max-height:100%; border-radius:8px;" onerror="this.alt='이미지를 찾을 수 없습니다'">`;
+    mediaBox.innerHTML = `<img src="${imgPath}" style="max-width:100%; max-height:100%; border-radius:8px;" onerror="this.alt='이미지 준비중'">`;
 
     overlay.classList.remove('hidden');
 }
 
+// 6. 별 생성
 function createStars() {
     const starsContainer = document.getElementById('stars');
     if (!starsContainer) return;
-    
-    const starCount = 150;
-    for (let i = 0; i < starCount; i++) {
+    for (let i = 0; i < 150; i++) {
         const star = document.createElement('div');
         star.className = 'star';
-        const x = Math.random() * 5000;
-        const y = Math.random() * (window.innerHeight - 100);
+        star.style.left = `${Math.random() * 5000}px`;
+        star.style.top = `${Math.random() * (window.innerHeight - 100)}px`;
         const size = Math.random() * 3;
-        const duration = 1 + Math.random() * 3;
-
-        star.style.left = `${x}px`;
-        star.style.top = `${y}px`;
         star.style.width = `${size}px`;
         star.style.height = `${size}px`;
-        star.style.setProperty('--duration', `${duration}s`);
+        star.style.setProperty('--duration', `${1 + Math.random() * 3}s`);
         starsContainer.appendChild(star);
     }
 }
 
-// 실행
+// 초기 실행
 createStars();
 update();
