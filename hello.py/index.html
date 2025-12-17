@@ -1,91 +1,47 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lullaby - Effortlessly Chic, Naturally Yours</title>
+    <title>AI Visionary | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="header-content">
-            <div class="logo">Lullaby</div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#overview">Overview</a></li>
-                    <li><a href="#shop">Online Shop</a></li>
-                    <li><a href="#review">Review</a></li>
-                    <li><a href="#help">Help Center</a></li>
-                </ul>
-            </nav>
-            <div class="header-icons">
-                <button class="search-btn">🔍</button>
-                <button class="cart-btn">🛒</button>
+    <div id="game-container">
+        <div id="world">
+            <div id="ground"></div>
+            
+            <div id="player"></div>
+
+            <div class="portal" data-title="Neural Landscapes" data-desc="A series of AI-generated environments exploring dream logic.">
+                <div class="portal-visual"></div>
+                <div class="portal-label">Project 01</div>
+            </div>
+
+            <div class="portal" style="left: 1200px;" data-title="Digital Flesh" data-desc="Exploring the boundary between organic textures and synthetic generation.">
+                <div class="portal-visual"></div>
+                <div class="portal-label">Project 02</div>
+            </div>
+
+            <div class="portal" style="left: 2000px;" data-title="Temporal Loops" data-desc="An AI video experiment with recursive motion." >
+                <div class="portal-visual"></div>
+                <div class="portal-label">Project 03</div>
             </div>
         </div>
-    </header>
 
-    <main>
-        <section class="image-grid-section">
-    <div class="image-wrapper full-width">
-        <img src="profile.png" alt="메인 비주얼 이미지">
-        <div class="grid-overlay top-left">
-            <h3>Summer Swimming Set-up</h3>
-            <a href="#" class="shop-link">Shop Now →</a>
-        </div>
-    </div>
-
-    <div class="image-wrapper half-width">
-        <img src="work1.jpg" alt="상품 이미지 1">
-        <div class="grid-overlay top-right">
-            <h3>Lettering T-shirt</h3>
-            <a href="#" class="shop-link">Shop Now →</a>
-        </div>
-    </div>
-
-    <div class="image-wrapper half-width">
-        <img src="work2.jpg" alt="상품 이미지 2">
-        <div class="grid-overlay bottom-left">
-            <h3>Green Check Dress</h3>
-            <a href="#" class="shop-link">Shop Now →</a>
-        </div>
-    </div>
-
-    <div class="image-wrapper half-width">
-        <img src="work3.jpg" alt="상품 이미지 3">
-        <div class="grid-overlay top-left">
-            <h3>Summer Daily Set-up</h3>
-            <a href="#" class="shop-link">Shop Now →</a>
-        </div>
-    </div>
-
-    <div class="image-wrapper half-width">
-        <img src="work4.jpg" alt="상품 이미지 4">
-        <div class="grid-overlay top-right">
-            <h3>Circle Pendant Necklace</h3>
-            <a href="#" class="shop-link">Shop Now →</a>
-        </div>
-    </div>
-</section>
-
-        <footer class="main-footer">
-            <div class="footer-content">
-                <p>Lullaby. CEO: Jasmin, Business License: ooo-oo-ooooo. Communication Sales Business Report: oooo-Seoul-oooo, Address: Seoul, Korea</p>
-                <p>Help Center: +82 (0)0-000-0000 (AM10 - PM5, Lunch PM1 - PM2, Weekend and Holiday Off)</p>
-                <p>All Photo by <a href="https://unsplash.com/@jasminchew" target="_blank">Jasmin Chew on Unsplash</a></p>
-                <div class="social-links">
-                    <a href="#">Instagram</a> / <a href="#">Tumblr</a> / <a href="#">Facebook</a>
-                </div>
-                <div class="policy-links">
-                    <a href="#">Terms of Use</a> <a href="#">Privacy</a>
-                </div>
-                <p class="hosting-info">Hosting by Imweb</p>
+        <div id="overlay" class="hidden">
+            <div class="overlay-content">
+                <button id="close-btn">Close [X]</button>
+                <h2 id="project-title">Project Name</h2>
+                <p id="project-desc">Description goes here...</p>
+                <div class="media-placeholder">AI Media Loading...</div>
             </div>
-        </footer>
-    </main>
+        </div>
 
-    <script src="script.js"></script>
+        <div class="instructions">Use [Arrow Keys] or [WASD] to Move & Jump</div>
+    </div>
+
+    <script src="game.js"></script>
 </body>
 </html>
