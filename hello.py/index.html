@@ -1,89 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <title>AI Production Archive</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/force-graph"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imweb Style Clone</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="graph"></div>
-  
-  <div id="modal" class="modal" onclick="closeModal()">
-    <div class="modal-content">
-      <img id="modal-img" src="" alt="">
-      <h2 id="modal-title"></h2>
-      <p id="modal-desc"></p>
-    </div>
-  </div>
 
-  <script>
-    // 데이터 설정 (여기서 T1, T2 테마를 연결합니다)
-    const gData = {
-      nodes: [
-        { id: 'Me', name: 'CORE ARTIST', img: 'profile.png', color: '#ff007f', size: 12, desc: 'AI 아티스트 소개글' },
-        { id: 'T1', name: 'CHARACTER', color: '#00f2ff', size: 8 },
-        { id: 'T2', name: 'ENVIRONMENT', color: '#7cfc00', size: 8 },
-        { id: 'Proj1', name: 'NEURAL CITY', img: 'work1.jpg', color: '#00f2ff', size: 10, desc: '캐릭터 작품 설명' }
-      ],
-      links: [
-        { source: 'Me', target: 'T1' },
-        { source: 'Me', target: 'T2' },
-        { source: 'T1', target: 'Proj1' } // 테마에 작품 연결!
-      ]
-    };
+    <header class="navbar">
+        <div class="logo">MY THEME</div>
+        <nav>
+            <ul>
+                <li><a href="#">쇼핑몰</a></li>
+                <li><a href="#">기업용</a></li>
+                <li><a href="#">포트폴리오</a></li>
+                <li><a href="#" class="btn-trial">무료 시작하기</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    const Graph = ForceGraph()
-      (document.getElementById('graph'))
-        .graphData(gData)
-        .backgroundColor('#000000')
-.nodeCanvasObject((node, ctx, globalScale) => {
-  const size = node.size;
-  ctx.save();
-  
-  ctx.shadowBlur = 15 / globalScale;
-  ctx.shadowColor = node.color;
-  ctx.fillStyle = '#111';
-  ctx.fillRect(node.x - size, node.y - size, size * 2, size * 2);
-  ctx.strokeStyle = node.color;
-  ctx.lineWidth = 1;
-  ctx.strokeRect(node.x - size, node.y - size, size * 2, size * 2);
+    <main class="container">
+        <section class="title-section">
+            <h1>브랜드의 시작, 테마로 완성하세요</h1>
+            <p>전문 디자이너가 제작한 고퀄리티 템플릿을 만나보세요.</p>
+        </section>
 
-  if (node.img) {
-    const img = new Image();
-    img.src = node.img;
-    
-    if (img.complete && img.naturalWidth !== 0) {
-      ctx.drawImage(img, node.x - size, node.y - size, size * 2, size * 2);
-    } else {
-      ctx.font = `${3 / globalScale}px Arial`;
-      ctx.fillStyle = node.color;
-      ctx.textAlign = 'center';
-      ctx.fillText("LOADING", node.x, node.y);
-      img.onload = () => Graph.refresh();
-    }
-  }
-  ctx.restore();
+        <div class="grid">
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://via.placeholder.com/400x300" alt="Theme 1">
+                    <div class="overlay">자세히 보기</div>
+                </div>
+                <div class="card-info">
+                    <h3>Modern Studio</h3>
+                    <p>미니멀한 감성의 포트폴리오 테마</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://via.placeholder.com/400x300" alt="Theme 2">
+                    <div class="overlay">자세히 보기</div>
+                </div>
+                <div class="card-info">
+                    <h3>Organic Shop</h3>
+                    <p>깨끗한 느낌의 커머스 테마</p>
+                </div>
+            </div>
+        </div>
+    </main>
 
-  const fontSize = 4 / globalScale;
-  ctx.font = `${fontSize}px Sans-Serif`;
-  ctx.fillStyle = 'white';
-  ctx.textAlign = 'center';
-  ctx.fillText(node.name, node.x, node.y + size + 5);
-})
-        .onNodeClick(node => {
-          if(node.img) openModal(node);
-        });
-
-    function openModal(node) {
-      document.getElementById('modal').style.display = 'flex';
-      document.getElementById('modal-img').src = node.img;
-      document.getElementById('modal-title').innerText = node.name;
-      document.getElementById('modal-desc').innerText = node.desc || '';
-    }
-
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
