@@ -1,132 +1,310 @@
+/* 기본 설정 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Pretendard', sans-serif;
 }
 
 body {
-    background-color: #f8f9fa;
+    font-family: 'Pretendard', sans-serif;
+    line-height: 1.6;
     color: #333;
+    background-color: #fff; /* 전체 배경색은 흰색으로 유지 */
 }
 
-/* 네비게이션 바 */
-.navbar {
-    position: fixed;
-    top: 0;
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 헤더 */
+.main-header {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 20px 50px;
-    background: #fff;
+    background-color: #fff;
     border-bottom: 1px solid #eee;
+    position: sticky; /* 스크롤해도 상단 고정 */
+    top: 0;
     z-index: 1000;
 }
 
-.navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.navbar ul {
+.header-content {
     display: flex;
-    list-style: none;
+    justify-content: space-between;
     align-items: center;
+    max-width: 1400px; /* 콘텐츠 최대 너비 */
+    margin: 0 auto;
 }
 
-.navbar ul li {
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
     margin-left: 30px;
 }
 
-.navbar a {
-    text-decoration: none;
+.main-nav a {
+    font-weight: 500;
+    color: #666;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.main-nav a:hover {
+    color: #000;
+}
+
+.main-nav a.active::after,
+.main-nav a:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+}
+
+.header-icons button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+    color: #666;
+}
+
+/* Hero Section (맨 위 큰 제목 영역) */
+.hero-section {
+    height: 40vh; /* 화면 높이의 40% */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f8f8f8; /* 배경색으로 여백 느낌 */
+    padding: 50px 20px;
+}
+
+.hero-text h1 {
+    font-size: 3.5em; /* 폰트 크기 조정 */
+    margin-bottom: 15px;
+    color: #000;
+}
+
+.hero-text p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Image Grid Section */
+.image-grid-section {
+    display: flex;
+    flex-wrap: wrap; /* 반응형을 위해 줄바꿈 허용 */
+    width: 100%;
+    max-width: 1400px; /* 콘텐츠 최대 너비 */
+    margin: 0 auto;
+    padding: 0px; /* 그리드 섹션 자체에는 패딩 없이 이미지들이 꽉 차게 */
+}
+
+.image-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin: 0; /* 이미지 사이 간격 없앰 */
+    display: flex; /* 내부 이미지가 부모 너비에 꽉 차도록 */
+    cursor: pointer;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 잘리지 않고 꽉 차게 */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.image-wrapper:hover img {
+    transform: scale(1.05); /* 호버 시 확대 효과 */
+}
+
+.full-width {
+    flex: 1 1 100%; /* 너비를 100%로 설정 */
+    height: 600px; /* 고정 높이 */
+}
+
+.half-width {
+    flex: 1 1 50%; /* 너비를 50%로 설정 */
+    height: 500px; /* 고정 높이 */
+}
+
+/* 이미지 오버레이 텍스트 */
+.grid-overlay {
+    position: absolute;
+    padding: 30px;
+    color: #fff;
+    pointer-events: none; /* 텍스트 클릭 방지 */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* 텍스트 가독성 향상 */
+    transition: opacity 0.3s ease;
+}
+
+.image-wrapper:hover .grid-overlay {
+    opacity: 0.9; /* 호버 시 약간 더 선명하게 */
+}
+
+.grid-overlay h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.grid-overlay .shop-link {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    pointer-events: auto; /* 링크 클릭 가능하게 */
+}
+
+.grid-overlay .shop-link:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.top-left { top: 30px; left: 30px; }
+.top-right { top: 30px; right: 30px; text-align: right;}
+.bottom-left { bottom: 30px; left: 30px; }
+.bottom-right { bottom: 30px; right: 30px; text-align: right;}
+
+/* 텍스트 설명 섹션 (중간 여백 및 설명) */
+.text-description-section {
+    padding: 100px 50px; /* 상하좌우 여백 */
+    background-color: #fff; /* 배경색 */
+    text-align: center;
+}
+
+.text-content {
+    max-width: 800px; /* 텍스트 너비 제한 */
+    margin: 0 auto;
+}
+
+.text-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #000;
+}
+
+.text-content p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* 푸터 */
+.main-footer {
+    background-color: #f8f8f8;
+    padding: 60px 50px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.main-footer p {
+    margin-bottom: 10px;
+}
+
+.main-footer a {
     color: #555;
     font-weight: 500;
 }
 
-.btn-trial {
-    background: #000;
-    color: #fff !important;
-    padding: 10px 20px;
-    border-radius: 5px;
+.main-footer a:hover {
+    text-decoration: underline;
 }
 
-/* 메인 컨테이너 */
-.container {
-    margin-top: 120px;
-    padding: 0 50px;
+.social-links a,
+.policy-links a {
+    margin: 0 10px;
 }
 
-.title-section {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.title-section h1 {
-    font-size: 40px;
+.social-links, .policy-links {
+    margin-top: 20px;
     margin-bottom: 15px;
 }
 
-/* 그리드 시스템 */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+.hosting-info {
+    margin-top: 30px;
+    font-size: 0.8em;
+    color: #aaa;
 }
 
-.card {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
-}
 
-.card:hover {
-    transform: translateY(-10px);
-}
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .main-header {
+        padding: 15px 20px;
+    }
+    .header-content {
+        flex-direction: column;
+    }
+    .main-nav ul {
+        margin-top: 15px;
+        justify-content: center;
+    }
+    .main-nav ul li {
+        margin: 0 10px;
+    }
+    .header-icons {
+        margin-top: 15px;
+    }
 
-.card-img {
-    position: relative;
-    width: 100%;
-    height: 250px;
-    background: #ddd;
-    overflow: hidden;
-}
+    .hero-text h1 {
+        font-size: 2.5em;
+    }
+    .hero-text p {
+        font-size: 1em;
+    }
 
-.card-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+    .image-grid-section {
+        padding: 0;
+    }
+    .full-width, .half-width {
+        flex: 1 1 100%; /* 모바일에서는 모든 이미지가 100% 너비 */
+        height: 400px; /* 모바일에서 이미지 높이 조절 */
+    }
 
-.overlay {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.4);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
+    .grid-overlay h3 {
+        font-size: 1.3em;
+    }
+    .grid-overlay .shop-link {
+        padding: 5px 10px;
+        font-size: 0.8em;
+    }
 
-.card:hover .overlay {
-    opacity: 1;
-}
+    .text-description-section {
+        padding: 50px 20px;
+    }
+    .text-content h2 {
+        font-size: 1.8em;
+    }
+    .text-content p {
+        font-size: 0.9em;
+    }
 
-.card-info {
-    padding: 20px;
-}
-
-.card-info h3 {
-    margin-bottom: 5px;
-}
-
-.card-info p {
-    color: #777;
-    font-size: 14px;
+    .main-footer {
+        padding: 40px 20px;
+    }
 }
