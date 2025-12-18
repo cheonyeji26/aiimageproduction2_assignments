@@ -99,10 +99,11 @@ function openProject(portal) {
 
     const title = portal.getAttribute('data-title');
     const desc = portal.getAttribute('data-desc');
-    
-    // 이미지와 상세설명 분리
     const images = portal.getAttribute('data-images') ? portal.getAttribute('data-images').split(',') : [];
     const details = portal.getAttribute('data-details') ? portal.getAttribute('data-details').split('|') : [];
+    
+    // ★ 링크 데이터 가져오기
+    const linkUrl = portal.getAttribute('data-link');
 
     document.getElementById('project-title').innerText = title;
     document.getElementById('project-desc').innerText = desc;
@@ -119,6 +120,15 @@ function openProject(portal) {
         `;
         mediaList.insertAdjacentHTML('beforeend', detailHtml);
     });
+
+    // ★ 링크 설정 로직
+    const linkElement = document.getElementById('project-link');
+    if (linkUrl && linkUrl !== "") {
+        linkElement.href = linkUrl;
+        linkElement.classList.remove('hidden-link');
+    } else {
+        linkElement.classList.add('hidden-link'); // 링크가 없으면 버튼 숨김
+    }
 
     overlay.classList.remove('hidden');
 }

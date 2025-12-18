@@ -379,3 +379,33 @@ button {
     color: #eee;
     min-height: 3em; /* 글자 길이에 상관없이 높이 균일화 */
 }
+
+#project-link-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    text-align: center;
+}
+
+#project-link {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--accent); /* 기존 하늘색 포인트 컬러 */
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+}
+
+#project-link:hover {
+    transform: scale(1.05);
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* 링크가 없을 때는 숨기기 위한 클래스 */
+.hidden-link {
+    display: none !important;
+}
