@@ -111,6 +111,22 @@ function openProject(portal) {
     overlay.classList.remove('hidden');
 }
 
+// update 함수 내부 위치 업데이트 코드 아래에 추가
+if (Math.abs(gameState.velX) > 1 || Math.abs(gameState.velY) > 1) {
+    createParticle(gameState.posX + 30, gameState.posY + 30);
+}
+
+function createParticle(x, y) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = x + 'px';
+    particle.style.top = y + 'px';
+    world.appendChild(particle);
+    
+    // 1초 뒤 소멸
+    setTimeout(() => particle.remove(), 1000);
+}
+
 // 별들을 월드 전체(5000x5000)에 뿌리기
 function createStars() {
     const starsContainer = document.getElementById('stars');

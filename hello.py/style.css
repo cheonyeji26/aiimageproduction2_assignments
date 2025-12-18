@@ -26,8 +26,10 @@ body, html {
     position: absolute;
     width: 5000px;
     height: 5000px;
-    background: radial-gradient(circle, #111 0%, #000 100%);
-    /* 0.1s는 카메라가 캐릭터를 따라올 때 약간의 부드러운 지연을 줍니다. */
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(63, 0, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(191, 0, 255, 0.1) 0%, transparent 50%),
+        #050505;
     transition: transform 0.1s ease-out; 
     /* 중요: world 안에서 스크롤이 발생하지 않도록 함 */
     will-change: transform; 
@@ -253,3 +255,18 @@ button {
 }
 
 /* 기존 Introduce(노란색)와 Work(푸른색) 스타일은 그대로 유지하세요 */
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.8;
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; transform: translateY(20px) scale(0); }
+}
