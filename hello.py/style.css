@@ -26,13 +26,27 @@ body, html {
     position: absolute;
     width: 5000px;
     height: 5000px;
+    /* 깊이감이 느껴지는 우주 배경 */
     background: 
-        radial-gradient(circle at 20% 30%, rgba(63, 0, 255, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(191, 0, 255, 0.1) 0%, transparent 50%),
-        #050505;
-    transition: transform 0.1s ease-out; 
-    /* 중요: world 안에서 스크롤이 발생하지 않도록 함 */
-    will-change: transform; 
+        radial-gradient(circle at 20% 30%, rgba(0, 242, 255, 0.08) 0%, transparent 40%), /* 민트빛 성운 */
+        radial-gradient(circle at 80% 20%, rgba(191, 0, 255, 0.08) 0%, transparent 40%), /* 보랏빛 성운 */
+        radial-gradient(circle at 50% 80%, rgba(0, 102, 255, 0.05) 0%, transparent 50%), /* 딥블루 성운 */
+        #030305; /* 기본 베이스 색상 */
+    background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+background-size: 100px 100px;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+    
+    /* 배경이 아주 미세하게 움직이는 효과 추가 */
+    animation: nebulaPulse 10s infinite alternate ease-in-out;
+}
+
+/* 성운이 살아있는 것처럼 미세하게 일렁이는 애니메이션 */
+@keyframes nebulaPulse {
+    from { filter: hue-rotate(0deg) brightness(1); }
+    to { filter: hue-rotate(10deg) brightness(1.2); }
 }
 
 #player {

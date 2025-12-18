@@ -135,14 +135,31 @@ function createParticle(x, y) {
 // 별들을 월드 전체(5000x5000)에 뿌리기
 function createStars() {
     const starsContainer = document.getElementById('stars');
+    // 별들에 사용할 색상 팔레트 (우주 느낌의 색상들)
+    const colors = ['#ffffff', '#fff4f4', '#f0f8ff', '#fffacd', '#e0ffff', '#ffebfb'];
+
     for (let i = 0; i < 400; i++) {
         const star = document.createElement('div');
         star.className = 'star';
+        
+        // 1. 위치 설정
         star.style.left = `${Math.random() * 5000}px`;
         star.style.top = `${Math.random() * 5000}px`;
+        
+        // 2. 크기 설정
         const size = Math.random() * 3;
         star.style.width = size + 'px';
         star.style.height = size + 'px';
+        
+        // 3. ★ 별 색깔 무작위 설정 ★
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        star.style.background = randomColor;
+        // 별에서 빛이 나는 느낌을 주려면 그림자도 살짝 추가
+        star.style.boxShadow = `0 0 ${size * 2}px ${randomColor}`;
+        
+        // 4. 깜빡이는 속도 랜덤 설정
+        star.style.setProperty('--duration', `${2 + Math.random() * 3}s`);
+        
         starsContainer.appendChild(star);
     }
 }
