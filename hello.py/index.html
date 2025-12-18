@@ -17,15 +17,41 @@
         <span class="nickname">Yeji</span>
     </div>
 
-    <div class="portal about-me p-intro" style="left: 2000px; top: 2200px;" data-title="Cheon Yeji" data-desc="안녕하세요! AI 제작 전문가로 성장 중인 천예지입니다.">
-        <div class="about-visual"></div>
-        <div class="portal-label">Introduce</div>
-    </div>
+    <div class="portal about-me p-intro" 
 
-    <div class="portal p-work01" style="left: 1900px; top: 2400px;" data-title="Char 01" data-desc="AI 프로젝트 1" data-img="work1.jpg">
-        <div class="portal-visual"></div>
-        <div class="portal-label">하야시 마루</div>
-    </div>
+     style="left: 2000px; top: 2200px;" 
+
+     data-title="Cheon Yeji" 
+
+     data-desc="안녕하세요! AI 제작 전문가로 성장 중인 천예지입니다."
+
+     data-images="profile1_1.jpg, profile1_2.jpg, profile1_3.jpg" 
+
+     data-details="순서대로 설명드리자면 | 제 일상 셀카, AI 증명사진, AI 픽셀사진입니다.">
+
+    <div class="portal-visual"></div>
+
+    <div class="portal-label">Introduce</div>
+
+</div>
+
+    <div class="portal p-work01" 
+
+     style="left: 1900px; top: 2400px;" 
+
+     data-title="Char 01" 
+
+     data-desc="AI 캐릭터 1"
+
+     data-images="work1_1.jpg, work1_2.jpg, work1_3.jpg" 
+
+     data-details="녹차와 말차를 사랑하는 '하야시 마루'. | {{user}}에게 따뜻한 말차와 편안한 쉼터를 제공 | "제가 방금 직접 찻잎을 갈아 만든 따뜻한 말차 한 잔을 내어드릴게요."">
+
+    <div class="portal-visual"></div>
+
+    <div class="portal-label">하야시 마루</div>
+
+</div>
 
     <div class="portal p-work02" style="left: 2000px; top: 2400px;" data-title="Char 02" data-desc="AI 프로젝트 2" data-img="work3.jpg">
         <div class="portal-visual"></div>
@@ -70,13 +96,17 @@
 </div>
 
     <div id="overlay" class="hidden">
-        <div class="overlay-content">
-            <button id="close-btn">Close [X]</button>
-            <h2 id="project-title">Project Name</h2>
-            <p id="project-desc">Description goes here...</p>
-            <div class="media-placeholder">이미지 로딩 중...</div>
+    <div class="overlay-content">
+        <button id="close-btn">Close [X]</button>
+        <h2 id="project-title">Project Name</h2>
+        
+        <div id="project-details-container">
+            <p id="project-desc">기본 설명글...</p>
+            <div id="project-media-list">
+                </div>
         </div>
     </div>
+</div>
 
     <div class="instructions">이동: [화살표/WASD] | 프로젝트 열기: [E] 또는 [Enter]</div>
 </div>

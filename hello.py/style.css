@@ -305,3 +305,35 @@ button {
 .p-work07 .portal-visual { background-image: url('work7_thumb.jpg'); }
 .p-work08 .portal-visual { background-image: url('work8_thumb.jpg'); }
 .p-outro .contact-visual { background-image: url('outro_contact.png'); }
+
+.overlay-content {
+    max-width: 900px;
+    max-height: 85vh; /* 화면의 85%까지만 높이 차지 */
+    overflow-y: auto; /* 내용이 많으면 스크롤 생성 */
+    background: #111;
+    padding: 30px;
+    border: 2px solid var(--accent);
+    border-radius: 15px;
+    position: relative;
+}
+
+/* 개별 사진+글 세트 스타일 */
+.detail-item {
+    margin-bottom: 40px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+.detail-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.detail-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ccc;
+}

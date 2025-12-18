@@ -94,24 +94,33 @@ function openProject(portal) {
     gameState.isOverlayOpen = true;
     gameState.velX = 0;
     gameState.velY = 0;
-    gameState.keys = {}; 
+    gameState.keys = {};
 
     const title = portal.getAttribute('data-title');
     const desc = portal.getAttribute('data-desc');
-    const imgPath = portal.getAttribute('data-img'); // 이미지 경로
+    
+    // 💡 여러 이미지를 쉼표(,)로 구분해서 가져온다고 가정합니다.
+    // 예: data-images="img1.jpg,img2.jpg"
+    const images = portal.getAttribute('data-images') ? portal.getAttribute('data-images').split(',') : [];
+    // 💡 상세 설명글들도 쉼표나 구분자로 가져올 수 있습니다.
+    const details = portal.getAttribute('data-details') ? portal.getAttribute('data-details').split('|') : [];
 
     document.getElementById('project-title').innerText = title;
     document.getElementById('project-desc').innerText = desc;
     
-    const mediaBox = document.querySelector('.media-placeholder');
-    
-    // 중요: 이미지가 있을 때만 이미지를 보여주고, 없으면 영역을 숨깁니다.
-    if (imgPath && imgPath !== "null") {
-        mediaBox.style.display = "flex";
-        mediaBox.innerHTML = `<img src="${imgPath}" style="max-width:100%; border-radius:8px;" onerror="this.style.display='none'">`;
-    } else {
-        mediaBox.style.display = "none"; // 이미지 경로가 없으면 숨김
-    }
+    const mediaList = document.getElementById('project-media-list');
+    mediaList.innerHTML = ""; // 기존 내용 초기화
+
+    // 사진과 설명을 반복문으로 추가
+    images.forEach((imgSrc, index) => {
+        const detailHtml = `
+            <div class="detail-item">
+                <img src="${imgSrc.trim()}" alt="Project image ${index + 1}">
+                <p>${details[index] ? details[index].trim() : "추가 설명이 없습니다."}</p>
+            </div>
+        `;
+        mediaList.insertAdjacentHTML('beforeend', detailHtml);
+    });
 
     overlay.classList.remove('hidden');
 }
