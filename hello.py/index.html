@@ -10,98 +10,91 @@
 
 <div id="game-container">
     <div id="world">
-    <div id="stars"></div>
-    
-    <div id="player">
-        <div id="player-light"></div>
-        <span class="nickname">Yeji</span>
+        <div id="stars"></div>
+        
+        <div id="player">
+            <div id="player-light"></div>
+            <span class="nickname">Yeji</span>
+        </div>
+
+        <div class="portal about-me p-intro" style="left: 2000px; top: 2200px;" 
+             data-title="Cheon Yeji" 
+             data-desc="안녕하세요! AI 제작 전문가로 성장 중인 천예지입니다."
+             data-images="profile1_2.jpg, profile1_3.jpg" 
+             data-details="셀카 사진으로 AI를 이용해 만든 증명사진 | 만든 증명사진으로 새롭게 만든 픽셀사진">
+            <div class="about-visual"></div> 
+            <div class="portal-label">Introduce</div>
+        </div>
+
+        <div class="portal p-work01" style="left: 1900px; top: 2400px;" 
+             data-title="하야시 마루" 
+             data-desc="안녕하세요, {{user}}님. 이 조용하고 외진 곳까지 찾아와주셔서 감사합니다. 저는 이곳 다실을 관리하고 있는 마루라고 해요..."
+             data-images="work1_1.jpg, work1_2.jpg, work1_3.jpg" 
+             data-details="녹차와 말차 광캐릭터, '하야시 마루' | {{user}}에게 따뜻한 말차와 편안한 쉼터를 제공 | 따뜻한 말차 한 잔을 내어드릴게요."
+             data-link="https://ai.eo25.kr/chat?characterId=1763044239337-j20ph7x6h">
+            <div class="portal-visual"></div>
+            <div class="portal-label">하야시 마루</div>
+        </div>
+
+        <div class="portal p-work02" style="left: 2000px; top: 2400px;" 
+             data-title="아키츠키 '루나' (秋月 'Luna')" 
+             data-desc="…오랜 기다림 끝에, 당신이 이 고요한 밤의 장소에 도착하셨군요..."
+             data-images="work2_1.jpg, work2_2.jpg, work2_3.jpg" 
+             data-details="십이귀월의 상현을 뛰어넘는 '일월귀' | 시공간 조작 및 기억 침식 능력 '월영진천' | 당신의 '존재 이유'는 무엇인가요?"
+             data-link="https://ai.eo25.kr/chat?characterId=1762439699950-lnp723sg6">
+            <div class="portal-visual"></div>
+            <div class="portal-label">아키츠키 루나</div>
+        </div>
+
+        <div class="portal p-work03" style="left: 2100px; top: 2400px;" data-title="Char 03" data-desc="AI 프로젝트 3" data-images="work2.jpg">
+            <div class="portal-visual"></div>
+            <div class="portal-label">코르크</div>
+        </div>
+
+        <div class="portal p-work04" style="left: 1800px; top: 2600px;" data-title="Char 04" data-desc="AI 프로젝트 4" data-images="work3.jpg">
+            <div class="portal-visual"></div>
+            <div class="portal-label">루미</div>
+        </div>
+
+        <div class="portal p-work05" style="left: 2200px; top: 2600px;" data-title="Char 05" data-desc="AI 프로젝트 5" data-images="work4.jpg">
+            <div class="portal-visual"></div>
+            <div class="portal-label">에테르</div>
+        </div>
+
+        <div class="portal p-work06" style="left: 3000px; top: 2200px;" data-title="AI 광고" data-desc="AI 프로젝트 6" data-images="work1.jpg">
+            <div class="portal-visual"></div>
+            <div class="portal-label">초코송이 말차맛 광고 영상</div>
+        </div>
+
+        <div class="portal p-work07" style="left: 3000px; top: 2350px;" data-title="웹드라마 촬영감독" data-desc="AI 프로젝트 7" data-images="work2.jpg">
+            <div class="portal-visual"></div>
+            <div class="portal-label">'디카페인 로맨스' 촬영</div>
+        </div>
+
+        <div class="portal p-work08" style="left: 3000px; top: 2500px;" data-title="1분 영화" data-desc="AI 프로젝트 8" data-images="work4.jpg">
+            <div class="portal-visual"></div>
+            <div class="portal-label">1분 가량의 AI 영화 만들기</div>
+        </div>
+
+        <div class="portal contact-me p-outro" style="left: 3000px; top: 2650px;" data-title="Contact Me" data-desc="이메일: cheontory@naver.com | 인스타그램: @yyezix">
+            <div class="contact-visual"></div>
+            <div class="portal-label">Contact Me</div>
+        </div>
     </div>
-
-    <div class="portal about-me p-intro" style="left: 2000px; top: 2200px;" 
-     data-title="Cheon Yeji" 
-     data-desc="안녕하세요! AI 제작 전문가로 성장 중인 천예지입니다."
-     data-images="profile1_2.jpg, profile1_3.jpg" 
-     data-details="셀카 사진으로 AI를 이용해 만든 증명사진 | 만든 증명사진으로 새롭게 만든 픽셀사진">
-    <div class="about-visual"></div> 
-    <div class="portal-label">Introduce</div>
-</div>
-
-    <div class="portal p-work01" 
-     style="left: 1900px; top: 2400px;" 
-     data-title="하야시 마루" 
-     data-desc="안녕하세요, {{user}}님. 이 조용하고 외진 곳까지 찾아와주셔서 감사합니다. 저는 이곳 다실을 관리하고 있는 마루라고 해요. 밖은 조금 소란스러웠을 텐데, 이제 편안히 앉으세요. 제가 방금 직접 찻잎을 갈아 만든 따뜻한 말차 한 잔을 내어드릴게요. 이곳에 오신 {{user}}님의 마음이 조금이나마 편안해지면 좋겠습니다. 어떤 일로 오셨나요?"
-     data-images="work1_1.jpg, work1_2.jpg, work1_3.jpg" 
-     data-details="녹차와 말차 광캐릭터, '하야시 마루' | {{user}}에게 따뜻한 말차와 편안한 쉼터를 제공 | '제가 방금 직접 찻잎을 갈아 만든 따뜻한 말차 한 잔을 내어드릴게요.'">
-     data-link="https://ai.eo25.kr/chat?characterId=1763044239337-j20ph7x6h">
-     <div class="portal-visual"></div>
-    <div class="portal-label">하야시 마루</div>
-
-</div>
-
-    <div class="portal p-work02" 
-     style="left: 2000px; top: 2400px;" 
-     data-title="아키츠키 '루나' (秋月 'Luna')" 
-     data-desc="…오랜 기다림 끝에, 당신이 이 고요한 밤의 장소에 도착하셨군요. 인간의 시간으로는 찰나에 불과한 {{user}}님의 눈빛에서, 곧 깨어질 허망한 맹세의 그림자가 보입니다. 당신의 '존재 이유'는 무엇인가요? 이 끝없는 고독을 견디지 못하고 부서져 내릴 때까지, 잠시 곁에서 지켜보도록 하겠습니다."
-     data-images="work2_1.jpg, work2_2.jpg, work2_3.jpg" 
-     data-details="십이귀월의 상현을 뛰어넘는 '일월귀', '아키츠키 루나' | 시공간 조작 및 기억 침식 능력인 혈귀술 '월영진천'을 사용 | '당신의 '존재 이유'는 무엇인가요?'">
-     data-link="https://ai.eo25.kr/chat?characterId=1762439699950-lnp723sg6">
-     <div class="portal-visual"></div>
-    <div class="portal-label">아키츠키 루나</div>
-
-</div>
-
-    <div class="portal p-work03" style="left: 2100px; top: 2400px;" data-title="Char 03" data-desc="AI 프로젝트 3" data-img="work2.jpg">
-        <div class="portal-visual"></div>
-        <div class="portal-label">코르크</div>
-    </div>
-
-    <div class="portal p-work04" style="left: 1800px; top: 2600px;" data-title="Char 04" data-desc="AI 프로젝트 4" data-img="work3.jpg">
-        <div class="portal-visual"></div>
-        <div class="portal-label">루미</div>
-    </div>
-
-    <div class="portal p-work05" style="left: 2200px; top: 2600px;" data-title="Char 05" data-desc="AI 프로젝트 5" data-img="work4.jpg">
-        <div class="portal-visual"></div>
-        <div class="portal-label">에테르</div>
-    </div>
-
-
-    <div class="portal p-work06" style="left: 3000px; top: 2200px;" data-title="AI 광고" data-desc="AI 프로젝트 6" data-img="work1.jpg">
-        <div class="portal-visual"></div>
-        <div class="portal-label">초코송이 말차맛 광고 영상</div>
-    </div>
-
-    <div class="portal p-work07" style="left: 3000px; top: 2350px;" data-title="웹드라마 촬영감독" data-desc="AI 프로젝트 7" data-img="work2.jpg">
-        <div class="portal-visual"></div>
-        <div class="portal-label">'디카페인 로맨스' 촬영</div>
-    </div>
-
-    <div class="portal p-work08" style="left: 3000px; top: 2500px;" data-title="1분 영화" data-desc="AI 프로젝트 8" data-img="work4.jpg">
-        <div class="portal-visual"></div>
-        <div class="portal-label">1분 가량의 AI 영화 만들기</div>
-    </div>
-
-    <div class="portal contact-me p-outro" style="left: 3000px; top: 2650px;" data-title="Contact Me" data-desc="이메일: cheontory@naver.com | 인스타그램: @yyezix">
-        <div class="contact-visual"></div>
-        <div class="portal-label">Contact Me</div>
-    </div>
-</div>
 
     <div id="overlay" class="hidden">
-    <div class="overlay-content">
-        <button id="close-btn">Close [X]</button>
-        <h2 id="project-title">Project Name</h2>
-        
-        <div id="project-details-container">
-           <p id="project-desc">기본 설명글...</p>
-            <div id="project-media-list"></div>
-            
-            <div id="project-link-container">
-                <a id="project-link" href="#" target="_blank">자세히 보기 (Link)</a>
+        <div class="overlay-content">
+            <button id="close-btn">Close [X]</button>
+            <h2 id="project-title">Project Name</h2>
+            <div id="project-details-container">
+                <p id="project-desc">기본 설명글...</p>
+                <div id="project-media-list"></div>
+                <div id="project-link-container">
+                    <a id="project-link" href="#" target="_blank">자세히 보기 (Link)</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <div class="instructions">이동: [화살표/WASD] | 프로젝트 열기: [E] 또는 [Enter]</div>
 </div>
