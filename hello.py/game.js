@@ -84,22 +84,30 @@ function checkCollisions() {
     });
 }
 
+// game.js의 openProject 함수를 찾아서 이 내용으로 덮어쓰세요.
 function openProject(portal) {
     gameState.isOverlayOpen = true;
-    gameState.keys = {}; // 키 입력 초기화 (오버레이 열릴 때 이동 멈춤)
+    gameState.velX = 0;
+    gameState.velY = 0;
+    gameState.keys = {}; 
 
     const title = portal.getAttribute('data-title');
     const desc = portal.getAttribute('data-desc');
-    const imgPath = portal.getAttribute('data-img'); // HTML의 data-img 속성
+    const imgPath = portal.getAttribute('data-img'); // 이미지 경로
 
     document.getElementById('project-title').innerText = title;
     document.getElementById('project-desc').innerText = desc;
     
     const mediaBox = document.querySelector('.media-placeholder');
-    if(imgPath) {
-        mediaBox.innerHTML = `<img src="${imgPath}" style="width:100%; border-radius:8px;">`;
-    }
     
+    // 중요: 이미지가 있을 때만 이미지를 보여주고, 없으면 영역을 숨깁니다.
+    if (imgPath && imgPath !== "null") {
+        mediaBox.style.display = "flex";
+        mediaBox.innerHTML = `<img src="${imgPath}" style="max-width:100%; border-radius:8px;" onerror="this.style.display='none'">`;
+    } else {
+        mediaBox.style.display = "none"; // 이미지 경로가 없으면 숨김
+    }
+
     overlay.classList.remove('hidden');
 }
 

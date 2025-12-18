@@ -202,3 +202,34 @@ button {
     pointer-events: none;
     z-index: 11; /* 캐릭터보다 위에 보이도록 */
 }
+
+/* style.css 맨 아래에 추가 */
+
+/* 소개 구역 전용 비주얼: 노란 다이아몬드 */
+.about-me .about-visual {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 215, 0, 0.2);
+    border: 3px solid #ffd700;
+    transform: rotate(45deg); 
+    animation: floating 3s infinite ease-in-out;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.about-me .portal-label {
+    color: #ffd700;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+@keyframes floating {
+    0%, 100% { transform: rotate(45deg) translate(0, 0); }
+    50% { transform: rotate(45deg) translate(-5px, -5px); }
+}
+
+/* 소개글 가독성 향상 */
+#project-desc {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    white-space: pre-wrap; /* 줄바꿈 허용 */
+}
