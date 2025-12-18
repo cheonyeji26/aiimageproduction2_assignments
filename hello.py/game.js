@@ -30,29 +30,34 @@ closeBtn.addEventListener('click', () => {
 function update() {
     if (gameState.isOverlayOpen) return;
 
-    // 상하좌우 이동 로직
+    // 1. 이동 로직
     if (gameState.keys['ArrowRight'] || gameState.keys['KeyD']) gameState.velX += gameState.speed;
     if (gameState.keys['ArrowLeft'] || gameState.keys['KeyA']) gameState.velX -= gameState.speed;
     if (gameState.keys['ArrowUp'] || gameState.keys['KeyW']) gameState.velY -= gameState.speed;
     if (gameState.keys['ArrowDown'] || gameState.keys['KeyS']) gameState.velY += gameState.speed;
 
-    // 마찰력 및 위치 적용
+    // 2. 마찰력 및 위치 적용
     gameState.velX *= gameState.friction;
     gameState.velY *= gameState.friction;
     gameState.posX += gameState.velX;
     gameState.posY += gameState.velY;
 
-    // 월드 경계 제한 (캐릭터가 우주 밖으로 나가지 않게)
+    // 3. 경계 제한
     gameState.posX = Math.max(0, Math.min(5000, gameState.posX));
     gameState.posY = Math.max(0, Math.min(5000, gameState.posY));
 
-    // 캐릭터 위치 업데이트 (top과 left 사용)
+    // 4. ★ 잔상 효과 생성 (이 위치로 옮겨야 합니다!) ★
+    // 속도가 어느 정도 있을 때만 잔상을 만듭니다.
+    if (Math.abs(gameState.velX) > 0.5 || Math.abs(gameState.velY) > 0.5) {
+        createParticle(gameState.posX + 30, gameState.posY + 30);
+    }
+
+    // 5. 캐릭터 및 카메라 업데이트
     player.style.left = gameState.posX + 'px';
     player.style.top = gameState.posY + 'px';
 
-    // 🎥 카메라 로직: 캐릭터를 화면 중앙에 고정
-    const camX = window.innerWidth / 2 - (gameState.posX + 20); // 20은 캐릭터 너비 절반
-    const camY = window.innerHeight / 2 - (gameState.posY + 20); // 20은 캐릭터 높이 절반
+    const camX = window.innerWidth / 2 - (gameState.posX + 30);
+    const camY = window.innerHeight / 2 - (gameState.posY + 30);
     world.style.transform = `translate(${camX}px, ${camY}px)`;
 
     checkCollisions();
