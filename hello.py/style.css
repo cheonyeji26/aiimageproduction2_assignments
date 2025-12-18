@@ -285,3 +285,23 @@ button {
     0% { opacity: 0.8; transform: scale(1); }
     100% { opacity: 0; transform: translateY(10px) scale(0.1); }
 }
+
+/* 공통 스타일: 비주얼 요소 안에 이미지가 들어갈 수 있게 설정 */
+.portal-visual, .about-visual {
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; /* 이미지가 넘치지 않게 */
+    border: 2px solid var(--accent); /* 테두리는 유지 */
+}
+
+/* 각 포털별 개별 사진 설정 */
+.p-intro .about-visual { background-image: url('intro_profile.png'); }
+.p-work01 .portal-visual { background-image: url('work1_thumb.jpg'); }
+.p-work02 .portal-visual { background-image: url('work2_thumb.jpg'); }
+.p-work03 .portal-visual { background-image: url('work3_thumb.jpg'); }
+.p-work04 .portal-visual { background-image: url('work4_thumb.jpg'); }
+.p-work05 .portal-visual { background-image: url('work5_thumb.jpg'); }
+.p-work06 .portal-visual { background-image: url('work6_thumb.jpg'); }
+.p-work07 .portal-visual { background-image: url('work7_thumb.jpg'); }
+.p-work08 .portal-visual { background-image: url('work8_thumb.jpg'); }
+.p-outro .contact-visual { background-image: url('outro_contact.png'); }
