@@ -234,3 +234,22 @@ button {
     font-size: 1.1rem;
     white-space: pre-wrap; /* 줄바꿈 허용 */
 }
+
+/* Contact Me 전용 스타일: 보라색 마름모 */
+.contact-me .contact-visual {
+    width: 60px;
+    height: 60px;
+    background: rgba(191, 0, 255, 0.2);
+    border: 3px solid #bf00ff;
+    transform: rotate(45deg); 
+    animation: floating 3s infinite ease-in-out;
+    box-shadow: 0 0 20px rgba(191, 0, 255, 0.5);
+}
+
+.contact-me .portal-label {
+    color: #bf00ff;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* 기존 Introduce(노란색)와 Work(푸른색) 스타일은 그대로 유지하세요 */
