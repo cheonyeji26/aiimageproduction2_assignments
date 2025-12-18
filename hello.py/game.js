@@ -89,7 +89,8 @@ function checkCollisions() {
     });
 }
 
-// game.js의 openProject 함수를 찾아서 이 내용으로 덮어쓰세요.
+// game.js의 openProject 함수 내부
+
 function openProject(portal) {
     gameState.isOverlayOpen = true;
     gameState.velX = 0;
@@ -99,24 +100,21 @@ function openProject(portal) {
     const title = portal.getAttribute('data-title');
     const desc = portal.getAttribute('data-desc');
     
-    // 💡 여러 이미지를 쉼표(,)로 구분해서 가져온다고 가정합니다.
-    // 예: data-images="img1.jpg,img2.jpg"
+    // 이미지와 상세설명 분리
     const images = portal.getAttribute('data-images') ? portal.getAttribute('data-images').split(',') : [];
-    // 💡 상세 설명글들도 쉼표나 구분자로 가져올 수 있습니다.
     const details = portal.getAttribute('data-details') ? portal.getAttribute('data-details').split('|') : [];
 
     document.getElementById('project-title').innerText = title;
     document.getElementById('project-desc').innerText = desc;
     
     const mediaList = document.getElementById('project-media-list');
-    mediaList.innerHTML = ""; // 기존 내용 초기화
+    mediaList.innerHTML = ""; 
 
-    // 사진과 설명을 반복문으로 추가
     images.forEach((imgSrc, index) => {
         const detailHtml = `
             <div class="detail-item">
-                <img src="${imgSrc.trim()}" alt="Project image ${index + 1}">
-                <p>${details[index] ? details[index].trim() : "추가 설명이 없습니다."}</p>
+                <img src="${imgSrc.trim()}" alt="image ${index + 1}">
+                <p>${details[index] ? details[index].trim() : ""}</p>
             </div>
         `;
         mediaList.insertAdjacentHTML('beforeend', detailHtml);
