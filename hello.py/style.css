@@ -20,13 +20,17 @@ body, html {
     overflow: hidden;
 }
 
+/* 수정된 부분만 적었습니다 */
+
 #world {
     position: absolute;
     width: 5000px;
     height: 5000px;
     background: radial-gradient(circle, #111 0%, #000 100%);
-    /* 카메라 이동을 부드럽게 만들기 위해 transition 추가 (선택사항) */
-    transition: transform 0.1s ease-out;
+    /* 0.1s는 카메라가 캐릭터를 따라올 때 약간의 부드러운 지연을 줍니다. */
+    transition: transform 0.1s ease-out; 
+    /* 중요: world 안에서 스크롤이 발생하지 않도록 함 */
+    will-change: transform; 
 }
 
 #player {
@@ -36,6 +40,9 @@ body, html {
     background: var(--player-color);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
     z-index: 10;
+    /* 초기 위치를 0,0으로 고정하여 JS 계산과 일치시킴 */
+    top: 0;
+    left: 0;
 }
 
 /* 캐릭터 발밑 노란 조명 */

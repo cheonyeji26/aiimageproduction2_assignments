@@ -25,6 +25,8 @@ closeBtn.addEventListener('click', () => {
     requestAnimationFrame(update);
 });
 
+// 수정 및 보완된 핵심 부분
+
 function update() {
     if (gameState.isOverlayOpen) return;
 
@@ -34,20 +36,23 @@ function update() {
     if (gameState.keys['ArrowUp'] || gameState.keys['KeyW']) gameState.velY -= gameState.speed;
     if (gameState.keys['ArrowDown'] || gameState.keys['KeyS']) gameState.velY += gameState.speed;
 
-    // 마찰력 적용 (부드럽게 멈춤)
+    // 마찰력 및 위치 적용
     gameState.velX *= gameState.friction;
     gameState.velY *= gameState.friction;
-
     gameState.posX += gameState.velX;
     gameState.posY += gameState.velY;
 
-    // 캐릭터 위치 업데이트
+    // 월드 경계 제한 (캐릭터가 우주 밖으로 나가지 않게)
+    gameState.posX = Math.max(0, Math.min(5000, gameState.posX));
+    gameState.posY = Math.max(0, Math.min(5000, gameState.posY));
+
+    // 캐릭터 위치 업데이트 (top과 left 사용)
     player.style.left = gameState.posX + 'px';
     player.style.top = gameState.posY + 'px';
 
-    // 🎥 카메라 로직: 캐릭터가 항상 화면 중앙에 오도록 배경을 움직임
-    const camX = window.innerWidth / 2 - gameState.posX;
-    const camY = window.innerHeight / 2 - gameState.posY;
+    // 🎥 카메라 로직: 캐릭터를 화면 중앙에 고정
+    const camX = window.innerWidth / 2 - (gameState.posX + 20); // 20은 캐릭터 너비 절반
+    const camY = window.innerHeight / 2 - (gameState.posY + 20); // 20은 캐릭터 높이 절반
     world.style.transform = `translate(${camX}px, ${camY}px)`;
 
     checkCollisions();
@@ -55,16 +60,23 @@ function update() {
 }
 
 function checkCollisions() {
-    const playerRect = player.getBoundingClientRect();
+    // getBoundingClientRect 대신 월드 내 좌표값(gameState)으로 계산하는 것이 안전합니다.
+    const pX = gameState.posX;
+    const pY = gameState.posY;
+    const pSize = 40;
+
     portals.forEach(portal => {
-        const portalRect = portal.getBoundingClientRect();
+        // 포털의 좌표 추출 (HTML에 작성한 style의 left, top 값 기준)
+        const portalX = parseFloat(portal.style.left);
+        const portalY = parseFloat(portal.style.top);
+        const portalSize = 120; // .portal의 width/height
+
         if (
-            playerRect.left < portalRect.right &&
-            playerRect.right > portalRect.left &&
-            playerRect.top < portalRect.bottom &&
-            playerRect.bottom > portalRect.top
+            pX < portalX + portalSize &&
+            pX + pSize > portalX &&
+            pY < portalY + portalSize &&
+            pY + pSize > portalY
         ) {
-            // E 키를 누르면 열리도록 설정
             if (gameState.keys['KeyE'] || gameState.keys['Enter']) {
                 openProject(portal);
             }
@@ -74,8 +86,20 @@ function checkCollisions() {
 
 function openProject(portal) {
     gameState.isOverlayOpen = true;
-    document.getElementById('project-title').innerText = portal.getAttribute('data-title');
-    document.getElementById('project-desc').innerText = portal.getAttribute('data-desc');
+    gameState.keys = {}; // 키 입력 초기화 (오버레이 열릴 때 이동 멈춤)
+
+    const title = portal.getAttribute('data-title');
+    const desc = portal.getAttribute('data-desc');
+    const imgPath = portal.getAttribute('data-img'); // HTML의 data-img 속성
+
+    document.getElementById('project-title').innerText = title;
+    document.getElementById('project-desc').innerText = desc;
+    
+    const mediaBox = document.querySelector('.media-placeholder');
+    if(imgPath) {
+        mediaBox.innerHTML = `<img src="${imgPath}" style="width:100%; border-radius:8px;">`;
+    }
+    
     overlay.classList.remove('hidden');
 }
 
