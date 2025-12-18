@@ -182,14 +182,23 @@ button {
 
 .nickname {
     position: absolute;
-    bottom: -25px; /* 캐릭터 하단에서 25px 아래에 위치 */
+    /* bottom: 0은 캐릭터의 밑바닥입니다. 
+       거기서 -30px만큼 더 내리면 캐릭터 '아래' 공간에 배치됩니다. */
+    bottom: -30px; 
     left: 50%;
-    transform: translateX(-50%); /* 정확히 가로 중앙 정렬 */
+    transform: translateX(-50%); /* 정확히 가운데 정렬 */
     
     font-size: 14px;
     font-weight: bold;
     color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px var(--accent); /* 가독성을 위한 그림자 */
-    white-space: nowrap; /* 글자가 줄바꿈되지 않게 설정 */
-    pointer-events: none; /* 글자가 클릭을 방해하지 않게 설정 */
+    /* 검은색 외곽선을 주면 배경이 밝아도 잘 보입니다 */
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+    
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 11; /* 캐릭터보다 위에 보이도록 */
 }
